@@ -50,6 +50,8 @@ trait CacheAwareTrait
      */
     public function setTtl($ttl)
     {
+        Helper::checkTtlType($ttl);
+
         $this->ttl = $ttl;
     }
 
