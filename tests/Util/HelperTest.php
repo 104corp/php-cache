@@ -70,7 +70,7 @@ class HelperTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider getInvalidTtlCases
      */
-    public function shouldThrowExceptionWhenCallNormalizeTtlWithInvalidTtl($invalidTtl)
+    public function shouldThrowExceptionWhenCallNormalizeTtlWith($invalidTtl)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -81,7 +81,7 @@ class HelperTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider getInvalidTtlCases
      */
-    public function shouldThrowExceptionWhenCallNormalizeExpireAtWithInvalidTtl($invalidTtl)
+    public function shouldThrowExceptionWhenCallNormalizeExpireAtWith($invalidTtl)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -103,7 +103,7 @@ class HelperTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider getInvalidKeys
      */
-    public function shouldThrowExceptionWhenCallAssertStringType($invalidKey)
+    public function shouldThrowExceptionWhenCheckStringTypeWith($invalidKey)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -125,7 +125,7 @@ class HelperTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function shouldBeOkayWhenCallCheckTraversableTypeWithTraversableInput()
+    public function shouldBeOkayWhenCheckTraversableTypeWithTraversableInput()
     {
         Helper::checkTraversableType($this->getMockBuilder(\Traversable::class)->getMock());
         Helper::checkTraversableType(new \ArrayObject());
@@ -134,7 +134,7 @@ class HelperTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function shouldThrowExceptionWhenCallCheckTraversableTypeWithNotTraversableInput()
+    public function shouldThrowExceptionWhenCheckTraversableTypeWithNotTraversableInput()
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -145,7 +145,7 @@ class HelperTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider validTtlType
      */
-    public function shouldBeOkayWhenCallCheckTtlTypeWithValidInput($validInput)
+    public function shouldBeOkayWhenCheckTtlTypeWith($validInput)
     {
         Helper::checkTtlType($validInput);
     }
@@ -163,7 +163,7 @@ class HelperTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider invalidTtlType
      */
-    public function shouldBeOkayWhenCallCheckTtlTypeWithInvalidInput($invalidInput)
+    public function shouldThrowExceptionWhenCheckTtlTypeWith($invalidInput)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 

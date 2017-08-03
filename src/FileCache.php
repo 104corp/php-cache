@@ -34,11 +34,11 @@ EOF;
      * @param mixed $value
      * @throws InvalidArgumentException
      */
-    public static function assertValueType($value)
+    public static function checkValueType($value)
     {
         if (is_array($value) || $value instanceof Traversable) {
             foreach ($value as $item) {
-                static::assertValueType($item);
+                static::checkValueType($item);
             }
 
             return;
@@ -179,7 +179,7 @@ EOF;
     public function set($key, $value, $ttl = null)
     {
         Helper::checkStringType($key);
-        static::assertValueType($value);
+        static::checkValueType($value);
 
         $this->setData($key, $value, $ttl);
 
