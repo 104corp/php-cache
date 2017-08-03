@@ -12,7 +12,9 @@ PSR-16 simple cache implements written by PHP.
 
 使用 [Composer][] 安裝
 
+```
 $ composer require 104corp/cache
+```
 
 ## 說明
 
@@ -66,8 +68,6 @@ class Resource
 實際要使用 `Resource` 物件時，只要傳入適當的 cache driver 即可運作，如 [Symfony Cache](https://github.com/symfony/cache) 。
 
 ```php
-<?php
-
 $cacheInstance = new \Symfony\Component\Cache\Simple\PhpFilesCache();
 
 $resource = new Resource();
@@ -86,12 +86,11 @@ Cache 元件實作 `Psr\SimpleCache\CacheInterface` ，因此可以直接使用�
 
 測試階段可使用 `Corp104\Cache\ArrayCache` 來測元件與 Cache 的互動和結果是否正常。
 
-
 ## Contributing
 
 開發相關資訊可以參考 [CONTRIBUTING](/CONTRIBUTING.md) ，有任何問題或建議，歡迎發 issue ；如果覺得程式碼可以修更好的話，也歡迎發 PR 修正。
 
-PR 如何使用可以參考 [Git 官方文件](https://git-scm.com/book/zh-tw/v2/GitHub-%E5%8F%83%E8%88%87%E4%B8%80%E5%80%8B%E5%B0%88%E6%A1%88)
+PR 如何使用可以參考 [Git 官方文件](https://git-scm.com/book/zh-tw/v2/GitHub-%E5%8F%83%E8%88%87%E4%B8%80%E5%80%8B%E5%B0%88%E6%A1%88)。
 
 
 [Composer]: https://getcomposer.org/
