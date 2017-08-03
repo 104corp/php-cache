@@ -1,6 +1,6 @@
 {
     "name": "104corp/cache",
-    "description": "Simple cache adapter written by PHP.",
+    "description": "PSR-16 simple cache implements written by PHP.",
     "type": "library",
     "license": "BSD-3-Clause",
     "require": {
