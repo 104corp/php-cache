@@ -12,8 +12,8 @@ php:
 branches:
   only:
   - master
-  - /^\d+\.x$/
-  - /^\d+\.\d+\.\d+$/
+  - "/^\\d+\\.x$/"
+  - "/^\\d+\\.\\d+\\.\\d+$/"
 
 before_script:
 - composer install --prefer-dist
@@ -25,5 +25,12 @@ script:
 cache:
   directories:
   # See https://blog.wyrihaximus.net/2015/07/composer-cache-on-travis/
-  - $HOME/.composer/cache/files
+  - "$HOME/.composer/cache/files"
   - vendor
+
+notifications:
+  email: false
+  slack:
+    on_success: change
+    on_failure: always
+    secure: UNIYPQzDaIOB6Ehv+1rcRtNFkNxEkuB0CUva1oO9pxvr4QUrJMinzMibttLydMDpoctKCP3V8GM3ov7f4UP5fCCrYfVIwLkGaYH32XApPw10EUaZ8gOCJSjDNOT3SYZiX7wkggS2G1ZWjLYeBgljv0WgzuWbxhH6lfxUDtdGawtkmq3NRgU92ZVYc0xDyPHyD98luT/xROtbIM3eSOwF6B5sR9qWZrGgN0lTwsVxzylzfswD7WpxVTzAq/5Bx32WDhletrcys4xqv2R4l+F8aMyK80y/11eI2xQ89XCBSd4zv6iNfrcKSFGD4woFjjJZRHJs5jMdhAF5XhlKAT4ApTzh85LDYxGk4J36F9LMov+5kzeAVoqK2KUk5ARi/8OvbzNqIonHno8bq5xweQ8MRToyg0AE6pTbyvr5wEwNEYlSh20Uyt8TL+ECCiL0ea6D10IGAqtR9GFCvxtFUhdwGfDyzD2NgeS8W3dzMMkotnSXIUssWknoOodskCUW2IwJlYMDtHDdJaXFSaaR6YP6iqrW7Kig/eGhYd4cJibelC8xn3qWUnTgYePtGBB8drL8So5/gjwkBlnlXsdjD6J/iI2eW3BjkHwfk/B2nN9YB8Wu9Y7GvjiIOpiKTKqCiJa7nM9sKY5ygIzLTO9N/qbBPcly9O/z5OUYCFbSJScnug0=
