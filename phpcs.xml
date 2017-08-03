@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ruleset>
+    <!-- display progress and sniff -->
+    <arg value="p"/>
+    <arg value="s"/>
+
+    <!-- use colors in output -->
+    <arg name="colors"/>
+
+    <!-- inherit rules from: -->
+    <rule ref="PSR2"/>
+
+    <!-- specific and just exclude rules in some file -->
+
+    <!-- specific and just exclude rules in testing files -->
+
+    <!-- Paths and file to check -->
+    <file>src</file>
+    <file>tests</file>
+
+    <!-- exclude file, e.g. Cache -->
+    <exclude-pattern>src/Common/FunctionTree/Resource/Cache</exclude-pattern>
+</ruleset>

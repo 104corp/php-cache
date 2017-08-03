@@ -1,6 +1,6 @@
 {
     "name": "104corp/cache",
-    "description": "Simple cache driver written by PHP.",
+    "description": "Simple cache adapter written by PHP.",
     "type": "library",
     "license": "BSD-3-Clause",
     "require": {
@@ -14,6 +14,11 @@
     "autoload": {
         "psr-4": {
             "Corp104\\Cache\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Corp104\\Cache\\": "tests"
         }
     },
     "config": {
