@@ -26,3 +26,8 @@ nbproject/*
 .project
 .buildpath
 .settings
+
+# Composer files
+/vendor
+/composer.lock
+/composer.phar
