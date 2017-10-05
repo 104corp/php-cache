@@ -31,3 +31,6 @@ nbproject/*
 /vendor
 /composer.lock
 /composer.phar
+
+# Clover files
+clover.xml
