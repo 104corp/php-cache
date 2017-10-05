@@ -1,6 +1,7 @@
 # Cache 
 
 [![Build Status](https://travis-ci.org/104corp/php-cache.svg?branch=master)](https://travis-ci.org/104corp/php-cache)
+[![Coverage Status](https://coveralls.io/repos/github/104corp/php-cache/badge.svg?branch=master)](https://coveralls.io/github/104corp/php-cache?branch=master)
 
 PSR-16 simple cache implements written by PHP.
 
