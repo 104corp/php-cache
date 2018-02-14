@@ -8,12 +8,18 @@ php:
 - 5.6
 - 7.0
 - 7.1
+- 7.2
+- nightly
+
+matrix:
+  allow_failures:
+  - php: nightly
 
 branches:
   only:
   - master
-  - "/^\\d+\\.x$/"
-  - "/^\\d+\\.\\d+\\.\\d+$/"
+  - /^\d+\.x$/
+  - /^\d+\.\d+\.\d+$/
 
 before_script:
 - composer install --prefer-dist
@@ -38,4 +44,4 @@ notifications:
   slack:
     on_success: change
     on_failure: always
-    secure: UNIYPQzDaIOB6Ehv+1rcRtNFkNxEkuB0CUva1oO9pxvr4QUrJMinzMibttLydMDpoctKCP3V8GM3ov7f4UP5fCCrYfVIwLkGaYH32XApPw10EUaZ8gOCJSjDNOT3SYZiX7wkggS2G1ZWjLYeBgljv0WgzuWbxhH6lfxUDtdGawtkmq3NRgU92ZVYc0xDyPHyD98luT/xROtbIM3eSOwF6B5sR9qWZrGgN0lTwsVxzylzfswD7WpxVTzAq/5Bx32WDhletrcys4xqv2R4l+F8aMyK80y/11eI2xQ89XCBSd4zv6iNfrcKSFGD4woFjjJZRHJs5jMdhAF5XhlKAT4ApTzh85LDYxGk4J36F9LMov+5kzeAVoqK2KUk5ARi/8OvbzNqIonHno8bq5xweQ8MRToyg0AE6pTbyvr5wEwNEYlSh20Uyt8TL+ECCiL0ea6D10IGAqtR9GFCvxtFUhdwGfDyzD2NgeS8W3dzMMkotnSXIUssWknoOodskCUW2IwJlYMDtHDdJaXFSaaR6YP6iqrW7Kig/eGhYd4cJibelC8xn3qWUnTgYePtGBB8drL8So5/gjwkBlnlXsdjD6J/iI2eW3BjkHwfk/B2nN9YB8Wu9Y7GvjiIOpiKTKqCiJa7nM9sKY5ygIzLTO9N/qbBPcly9O/z5OUYCFbSJScnug0=
+    secure: bXbulKMQgrroncVF2x8ICnvsoMbz//4nHbQa8VobAW1tWwKXeRm9g8HWI1KRL4x4qbGMCFWgAS2yxvqbwmnuY78u8aqyY9gGqNK7BFM1OnT+Hh6EduRikTPSCTaRmB4jJL0m8FEElwC9uMn2BLCYKd0Cm9fbB7GB65+mNvhxi25e0oQo+eOnd+6fA0Bk0EofkkGRr2alak2kjxOEnXXjkVV7mu9LqwJ7PmSMq/SmLh19JbfajL5qYOJgFNc/IhDGAbqw30ZmT+VtE6ZMbgPqCiAQvthc52/E36/GuiIJ8zTJKIPpwPKnYESI7OrNwOpV/VIyo1td8SIw4Kr4t2c98LqP8MW0TDRtlEaIRPeqATDazJWDUurZH/Pdu3tDplY7NLUyLiPvnhiZ5+gD5Aaw/gp+ZvCZoyEzzErso99KJIypnhxneS5xPm//0NJC2pbBt13e5DMdLsKP964xLSPjCvLqW3s9/7EDL2Lv7BUbxwvaMwy05N/XKWdKFJzyZgI4osYdoe5ammRVuskwIlClapMPRtH7Nqb/i4Lhkx34SHy6pewV/uPDMqpNAtcP3L4Vj35hAPJbQ/vexwY2ScX0ZUqfPQzq1pIegvYqxCMlaT4cKDDz6RM0JfzAkESUX+NBfJLARfVV4uPDuqV8HgHe6VWobDv2qF549Wxa8TSlBTw=
