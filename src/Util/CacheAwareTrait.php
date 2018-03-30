@@ -11,14 +11,14 @@ use Psr\SimpleCache\CacheInterface;
 trait CacheAwareTrait
 {
     /**
-     * @var null|int|DateInterval
-     */
-    private $ttl = false;
-
-    /**
      * @var CacheInterface
      */
     protected $cache;
+
+    /**
+     * @var null|int|DateInterval
+     */
+    private $ttl = false;
 
     /**
      * Set the cache driver

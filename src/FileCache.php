@@ -86,6 +86,141 @@ EOF;
     }
 
     /**
+     * @param string $key
+     * @param mixed $value
+     * @param null|int $ttl
+     * @throws InvalidArgumentException
+     */
+    private function setData($key, $value, $ttl = null)
+    {
+        $this->data[$key] = [
+            'expire' => Helper::normalizeExpireAt($ttl),
+            'data' => $value,
+        ];
+    }
+
+    /**
+     * @param string $file Full file path
+     * @throws InvalidArgumentException
+     */
+    public function __construct($file)
+    {
+        static::initFile($file);
+
+        $this->file = $file;
+        $this->reloadFile();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function get($key, $default = null)
+    {
+        Helper::checkStringType($key);
+
+        if (!isset($this->data[$key])) {
+            return $default;
+        }
+
+        $item = $this->data[$key];
+
+        if ($item['expire'] !== null && time() >= $item['expire']) {
+            return $default;
+        }
+
+        return $this->data[$key]['data'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function set($key, $value, $ttl = null)
+    {
+        Helper::checkStringType($key);
+        static::checkValueType($value);
+
+        $this->setData($key, $value, $ttl);
+
+        return $this->writeFile($this->data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function delete($key)
+    {
+        Helper::checkStringType($key);
+
+        unset($this->data[$key]);
+
+        return $this->writeFile($this->data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function clear()
+    {
+        $this->data = [];
+
+        return $this->deleteFile();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMultiple($keys, $default = null)
+    {
+        Helper::checkTraversableType($keys);
+
+        $data = [];
+
+        foreach ($keys as $key) {
+            $data[$key] = $this->get($key, $default);
+        }
+
+        return $data;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMultiple($values, $ttl = null)
+    {
+        Helper::checkTraversableType($values);
+
+        foreach ($values as $key => $value) {
+            $this->setData($key, $value, $ttl);
+        }
+
+        return $this->writeFile($this->data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function deleteMultiple($keys)
+    {
+        Helper::checkTraversableType($keys);
+
+        foreach ($keys as $key) {
+            unset($this->data[$key]);
+        }
+
+        return $this->writeFile($this->data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function has($key)
+    {
+        Helper::checkStringType($key);
+
+        return isset($this->data[$key]);
+    }
+
+    /**
      * @return boolean
      */
     private function deleteFile()
@@ -94,7 +229,7 @@ EOF;
     }
 
     /**
-     * @return array
+     * Reload file
      */
     private function reloadFile()
     {
@@ -105,21 +240,6 @@ EOF;
         }
 
         $this->data = $data;
-    }
-
-    /**
-     * @param string $key
-     * @param mixed $value
-     * @param null|int $ttl
-     * @return bool
-     * @throws InvalidArgumentException
-     */
-    private function setData($key, $value, $ttl = null)
-    {
-        $this->data[$key] = [
-            'expire' => Helper::normalizeExpireAt($ttl),
-            'data' => $value,
-        ];
     }
 
     /**
@@ -145,102 +265,5 @@ EOF;
         }
 
         return $isSuccess;
-    }
-
-    /**
-     * @param string $file Full file path
-     * @throws InvalidArgumentException
-     */
-    public function __construct($file)
-    {
-        static::initFile($file);
-
-        $this->file = $file;
-        $this->reloadFile();
-    }
-
-    public function get($key, $default = null)
-    {
-        Helper::checkStringType($key);
-
-        if (!isset($this->data[$key])) {
-            return $default;
-        }
-
-        $item = $this->data[$key];
-
-        if ($item['expire'] !== null && time() >= $item['expire']) {
-            return $default;
-        }
-
-        return $this->data[$key]['data'];
-    }
-
-    public function set($key, $value, $ttl = null)
-    {
-        Helper::checkStringType($key);
-        static::checkValueType($value);
-
-        $this->setData($key, $value, $ttl);
-
-        return $this->writeFile($this->data);
-    }
-
-    public function delete($key)
-    {
-        Helper::checkStringType($key);
-
-        unset($this->data[$key]);
-
-        return $this->writeFile($this->data);
-    }
-
-    public function clear()
-    {
-        $this->data = [];
-
-        return $this->deleteFile();
-    }
-
-    public function getMultiple($keys, $default = null)
-    {
-        Helper::checkTraversableType($keys);
-
-        $data = [];
-
-        foreach ($keys as $key) {
-            $data[$key] = $this->get($key, $default);
-        }
-
-        return $data;
-    }
-
-    public function setMultiple($values, $ttl = null)
-    {
-        Helper::checkTraversableType($values);
-
-        foreach ($values as $key => $value) {
-            $this->setData($key, $value, $ttl);
-        }
-
-        return $this->writeFile($this->data);
-    }
-
-    public function deleteMultiple($keys)
-    {
-        Helper::checkTraversableType($keys);
-
-        foreach ($keys as $key) {
-            unset($this->data[$key]);
-        }
-
-        return $this->writeFile($this->data);
-    }
-
-    public function has($key)
-    {
-        Helper::checkStringType($key);
-
-        return isset($this->data[$key]);
     }
 }

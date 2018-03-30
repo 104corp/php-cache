@@ -11,6 +11,9 @@ class ArrayCache implements CacheInterface
 {
     private $data = [];
 
+    /**
+     * {@inheritdoc}
+     */
     public function get($key, $default = null)
     {
         Helper::checkStringType($key);
@@ -27,6 +30,9 @@ class ArrayCache implements CacheInterface
         return $item['value'];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function set($key, $value, $ttl = null)
     {
         Helper::checkStringType($key);
@@ -39,6 +45,9 @@ class ArrayCache implements CacheInterface
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function delete($key)
     {
         Helper::checkStringType($key);
@@ -48,6 +57,9 @@ class ArrayCache implements CacheInterface
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function clear()
     {
         $this->data = [];
@@ -55,6 +67,9 @@ class ArrayCache implements CacheInterface
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getMultiple($keys, $default = null)
     {
         Helper::checkTraversableType($keys);
@@ -67,6 +82,9 @@ class ArrayCache implements CacheInterface
         return $ret;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setMultiple($values, $ttl = null)
     {
         Helper::checkTraversableType($values);
@@ -78,6 +96,9 @@ class ArrayCache implements CacheInterface
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function deleteMultiple($keys)
     {
         Helper::checkTraversableType($keys);
@@ -89,6 +110,9 @@ class ArrayCache implements CacheInterface
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function has($key)
     {
         Helper::checkStringType($key);

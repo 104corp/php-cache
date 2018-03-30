@@ -10,26 +10,41 @@ use Psr\SimpleCache\CacheInterface;
  */
 class DummyCache implements CacheInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function get($key, $default = null)
     {
         return $default;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function set($key, $value, $ttl = null)
     {
         return false;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function delete($key)
     {
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function clear()
     {
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getMultiple($keys, $default = null)
     {
         foreach ($keys as $key) {
@@ -37,16 +52,25 @@ class DummyCache implements CacheInterface
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setMultiple($values, $ttl = null)
     {
         return false;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function deleteMultiple($keys)
     {
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function has($key)
     {
         return false;
