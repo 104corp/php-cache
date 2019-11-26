@@ -1,13 +1,15 @@
 <?php
+
 namespace Corp104\Cache;
 
 use ArrayObject;
 use Corp104\Cache\Exception\InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
 use Psr\SimpleCache\CacheInterface;
 use stdClass;
 use Traversable;
 
-class ArrayCacheTest extends \PHPUnit_Framework_TestCase
+class ArrayCacheTest extends TestCase
 {
     /**
      * @var CacheInterface
@@ -73,49 +75,41 @@ class ArrayCacheTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException InvalidArgumentException
      * @dataProvider getInvalidKeys
      */
     public function shouldThrowExceptionWhenCallSetWithInvalidKeys($invalidKey)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        // Act
         $this->target->set($invalidKey, 'invalid_keys');
     }
 
     /**
      * @test
+     * @expectedException InvalidArgumentException
      * @dataProvider getInvalidKeys
      */
     public function shouldThrowExceptionWhenCallHasWithInvalidKeys($invalidKey)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        // Act
         $this->target->has($invalidKey);
     }
 
     /**
      * @test
+     * @expectedException InvalidArgumentException
      * @dataProvider getInvalidKeys
      */
     public function shouldThrowExceptionWhenCallDeleteWithInvalidKeys($invalidKey)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        // Act
         $this->target->delete($invalidKey);
     }
 
     /**
      * @test
+     * @expectedException InvalidArgumentException
      * @dataProvider getInvalidKeys
      */
     public function shouldThrowExceptionWhenCallGetWithInvalidKeys($invalidKey)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        // Act
         $this->target->get($invalidKey);
     }
 
@@ -171,34 +165,28 @@ class ArrayCacheTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException InvalidArgumentException
      */
     public function shouldThrowExceptionWhenCallGetMultipleWithNotTraversable()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        // Act
         $this->target->getMultiple('test');
     }
 
     /**
      * @test
+     * @expectedException InvalidArgumentException
      */
     public function shouldThrowExceptionWhenCallDeleteMultipleWithNotTraversable()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        // Act
         $this->target->deleteMultiple('test');
     }
 
     /**
      * @test
+     * @expectedException InvalidArgumentException
      */
     public function shouldThrowExceptionWhenCallSetMultipleWithNotTraversable()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        // Act
         $this->target->setMultiple('test');
     }
 
@@ -248,8 +236,8 @@ class ArrayCacheTest extends \PHPUnit_Framework_TestCase
                     'key4' => 'value3',
                     'key5' => ['value', 'value2'],
                     'key6' => new stdClass,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

@@ -1,12 +1,14 @@
 <?php
+
 namespace Corp104\Cache\Util;
 
 use Corp104\Cache\Exception\InvalidArgumentException;
 use DateInterval;
 use DateTimeImmutable;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
-class HelperTest extends \PHPUnit_Framework_TestCase
+class HelperTest extends TestCase
 {
     /**
      * @test
@@ -68,23 +70,21 @@ class HelperTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException InvalidArgumentException
      * @dataProvider getInvalidTtlCases
      */
     public function shouldThrowExceptionWhenCallNormalizeTtlWith($invalidTtl)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
         Helper::normalizeTtl($invalidTtl);
     }
 
     /**
      * @test
+     * @expectedException InvalidArgumentException
      * @dataProvider getInvalidTtlCases
      */
     public function shouldThrowExceptionWhenCallNormalizeExpireAtWith($invalidTtl)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
         Helper::normalizeExpireAt($invalidTtl);
     }
 
@@ -101,12 +101,11 @@ class HelperTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException InvalidArgumentException
      * @dataProvider getInvalidKeys
      */
     public function shouldThrowExceptionWhenCheckStringTypeWith($invalidKey)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
         Helper::checkStringType($invalidKey);
     }
 
@@ -133,11 +132,10 @@ class HelperTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException InvalidArgumentException
      */
     public function shouldThrowExceptionWhenCheckTraversableTypeWithNotTraversableInput()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
         Helper::checkTraversableType('test');
     }
 
@@ -161,12 +159,11 @@ class HelperTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException InvalidArgumentException
      * @dataProvider invalidTtlType
      */
     public function shouldThrowExceptionWhenCheckTtlTypeWith($invalidInput)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
         Helper::checkTtlType($invalidInput);
     }
 

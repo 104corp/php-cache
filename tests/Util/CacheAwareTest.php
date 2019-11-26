@@ -1,18 +1,19 @@
 <?php
+
 namespace Corp104\Cache\Util;
 
 use Corp104\Cache\Exception\InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
 
-class CacheAwareTest extends \PHPUnit_Framework_TestCase
+class CacheAwareTest extends TestCase
 {
     /**
      * @test
+     * @expectedException InvalidArgumentException
      * @dataProvider getInvalidTtlCases
      */
     public function shouldThrowExceptionWhenGivenInvalidTTL($invalidTtl)
     {
-        $this->setExpectedException(InvalidArgumentException::class, gettype($invalidTtl));
-
         $target = $this->getMockForTrait(CacheAwareTrait::class);
         $target->setTtl($invalidTtl);
     }

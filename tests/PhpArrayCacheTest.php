@@ -1,10 +1,12 @@
 <?php
+
 namespace Corp104\Cache;
 
 use DateInterval;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
-class PhpArrayCacheTest extends \PHPUnit_Framework_TestCase
+class PhpArrayCacheTest extends TestCase
 {
     /**
      * @var string
