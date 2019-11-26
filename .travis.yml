@@ -27,6 +27,9 @@ before_script:
 script:
   - make test
 
+after_success:
+  - if [[ "7.3" == "${TRAVIS_PHP_VERSION}" ]]; then bash <(curl -s https://codecov.io/bash) ; fi
+
 cache:
   directories:
     # See https://blog.wyrihaximus.net/2015/07/composer-cache-on-travis/

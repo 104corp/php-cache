@@ -7,12 +7,11 @@
     <!-- use colors in output -->
     <arg name="colors"/>
 
+    <!-- check the php syntax -->
+    <rule ref="Generic.PHP.Syntax"/>
+
     <!-- inherit rules from: -->
     <rule ref="PSR2"/>
-
-    <!-- specific and just exclude rules in some file -->
-
-    <!-- specific and just exclude rules in testing files -->
 
     <!-- Paths and file to check -->
     <file>src</file>

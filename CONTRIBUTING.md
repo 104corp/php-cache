@@ -20,11 +20,7 @@ Git Commit 的內容沒有特別規範，但請先參考[這份文件](https://b
 
 ## 環境建置
 
-開發需要的工具如下：
-
-* [Composer][]
-
-安裝 Composer 套件：
+安裝 [Composer][] 套件：
 
     $ composer install
 
@@ -56,7 +52,6 @@ PHP Document 建議參考 [104 Guideline][] 上的說明。
 ## 版號定義
 
 使用最常見的 [`major.minor.build`](http://www.ithome.com.tw/voice/85505) 的定義。
-
 
 [PHPUnit]: https://phpunit.de/
 [Composer]: https://getcomposer.org/

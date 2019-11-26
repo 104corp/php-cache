@@ -32,5 +32,6 @@ nbproject/*
 /composer.lock
 /composer.phar
 
-# Clover files
-clover.xml
+# Artifacts files
+/build
+/.phpunit.result.cache

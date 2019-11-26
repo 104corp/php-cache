@@ -1,7 +1,10 @@
 # Cache 
 
-[![Build Status](https://travis-ci.org/104corp/php-cache.svg?branch=master)](https://travis-ci.org/104corp/php-cache)
-[![Coverage Status](https://coveralls.io/repos/github/104corp/php-cache/badge.svg?branch=master)](https://coveralls.io/github/104corp/php-cache?branch=master)
+[![Build Status](https://travis-ci.com/104corp/php-cache.svg?branch=master)](https://travis-ci.com/104corp/php-cache)
+[![codecov](https://codecov.io/gh/104corp/php-cache/branch/master/graph/badge.svg)](https://codecov.io/gh/104corp/php-cache)
+[![Latest Stable Version](https://poser.pugx.org/104corp/php-cache/v/stable)](https://packagist.org/packages/104corp/php-cache)
+[![Total Downloads](https://poser.pugx.org/104corp/php-cache/d/total.svg)](https://packagist.org/packages/104corp/php-cache)
+[![License](https://poser.pugx.org/104corp/php-cache/license)](https://packagist.org/packages/104corp/php-cache)
 
 PSR-16 simple cache implements written by PHP.
 
